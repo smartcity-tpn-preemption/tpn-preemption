@@ -1,3 +1,8 @@
 tripinfo*.xml
 *.log
 ~lock*
+.sonarlint
+*.pyc
+latexfiles/**
+
+.vscode/**

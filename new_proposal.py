@@ -50,7 +50,7 @@ def get_options():
   opt_parser.add_option('--skip', action="store_true",
                         default=False, help="json file is not generated in the end")
   opt_parser.add_option("--prefix", type="string", dest="prefix",
-                        default="static", help="Choose between static/dynamic scenarios")
+                        default="staticdynamic", help="Choose between static/dynamic scenarios")
   opt_parser.add_option("--el", type="string", dest="el",
                         default="low", help="Emergency Level for Djahel (low, medium, high)")
   opt_parser.add_option("--when-check", type="string", dest="whencheck",

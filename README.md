@@ -1,6 +1,6 @@
 # Traffic-Light Control for Emergency Vehicles
 
-This repository contains the source code and instructions to run some traffic-light control systems, using traffic-light preemption to achieve that goal.
+This repository contains the source code and instructions to run some traffic-light control systems, using algorithms to perform traffic-light preemptions, in order to reduce the timeloss of some desired Emergency Vehicle (EV).
 
 ## Getting started
 
@@ -12,11 +12,11 @@ First, we must make sure our libraries are installed. The following instructions
 
 `python -m pip install statsmodels`
 
-We have used pyfuzzy from [here](https://github.com/avatar29A/pyfuzzy.git). Follow those instructions to install it in your system.
+Install `pyfuzzy` following [these instructions](https://github.com/avatar29A/pyfuzzy.git).
 
 ## Installing SUMO
 
-All runs were done using [SUMO Simulator](https://sumo.dlr.de/docs/). To get the same results we've obtained, you must use a specific version: v1_4_0+0443-637095a (that's because it's the version used when we were collecting the results). Python 3 should also be used. Before following the installing instructions, clone the repository:
+All runs were done using [SUMO Simulator](https://sumo.dlr.de/docs/). To get the same results we've obtained, you must use a specific version of that simulator: v1_4_0+0443-637095a (that's because it's the version we were using when we were collecting the results). Python 3 should also be used. Before following the installation instructions, clone the repository:
 
 `git clone --recursive https://github.com/eclipse/sumo`
 
@@ -24,30 +24,30 @@ and then
 
 `git checkout 637095a`
 
-The rest of the SUMO installing instructions are [here](https://github.com/eclipse/sumo#build-and-installation).
+The rest of the SUMO installation instructions are [here](https://github.com/eclipse/sumo#build-and-installation).
 
 ## Running the baseline (No preemption) version
 
-To observe the gain obtained by the preemptive implementations, one must first run the baseline version, i.e., the situation where no preemption is used. To do that, execute the following command in this repository folder
+To observe the gain achieved by preemptive implementations, one must first run the baseline version, i.e., the situation where no preemption is used. To do that, execute the following command in this repository folder
 
 `python3 new_proposal.py --scenario <SPECIFIC SCENARIO FOLDER> --ev <EV NAME> --seedsumo <SEED SUMO>`
 
 To get results close to ours, the parameters list are:
 
-* `--scenario`: use our scenarios. For example, **./scenarios/defined/sp/sp-1**, or **./scenarios/defined/ny/ny-3**. Check scenarios folder to get valid scenarios
+* `--scenario`: use our scenarios. For example, **./scenarios/defined/sp/sp-1**, or **./scenarios/defined/ny/ny-3**. Check `scenarios` folder to get valid scenarios
 * `--ev`: For SP, use **veh11651**. For NY, use **veh4856**. Valid values are the `id` field in any entry of `osm.passenger.rou.xml` scenario file (an example [here](scenarios/defined/sp/sp-1/osm.passenger.rou.xml)) 
 * `--seedsumo`: Use one of the values in `seeds.txt`.
 
 Some additional parameters can be used:
 
-* `--skip`: Specify it without value to not write `.json` result file
+* `--skip`: Specify it without value to not create nor override the `.json` result file
 * `--nogui`: Specify it without value to run a console-only experiment
-* `--override`: If it is `False` and the `.json` result file exists, the run is cancelled. If `True`, the experiment runs anyway
+* `--override`: If it is `False` and the `.json` result file exists, the run is cancelled. If `True`, the experiment runs anyway, and the previou json file is overrided
 * `--alg`: Specify the preemption algorithm. Default is `no-preemption`
 
 ## Getting the results
 
-At the end of simulation, the console shows the EV's timeloss and some other metrics. If desired, the results are written in a json file in results folder that is created inside of scenario folder (an example can be seen [here](scenarios/defined/sp/sp-1/results/staticdynamic/alg!djahel_ev!veh5393_seed!227_wc!start_el!high.json))
+At the end of simulation, the console shows the EV's timeloss and some other metrics. If desired, the results are written in a json file in a `results` folder that is created inside of scenario folder (an example can be seen [here](scenarios/defined/sp/sp-1/results/staticdynamic/alg!djahel_ev!veh5393_seed!227_wc!start_el!high.json)).
 
 ## Running TPN algorithm
 
@@ -57,8 +57,8 @@ TPN is our main algorithm. To use it, it is enough to use `--alg petri`.
 
 A simple RFId was designed and it is avaliable using `--alg rfid`. Some parameters must be informed:
 
-* `--distancedetection`: Used values were 25 or 100 (but it could be any value greater than 0)
-* `--ncycles`: Used values were 2 and 5 (but it could be any value greater than 0)
+* `--distancedetection`: 25 or 100 (but it could be any value greater than 0)
+* `--ncycles`: 2 and 5 (but it could be any value greater than 0)
 
 ## Running Fuzzy algorithm
 
@@ -68,7 +68,7 @@ Our version of Fuzzy logic algorithm (based on [this work](https://ieeexplore.ie
 
 ## Custom Scenarios
 
-If you want to generate different scenarios, you can use the [OSMWebWizard tool](https://sumo.dlr.de/docs/Tutorials/OSMWebWizard.html). The selected EV must be in the **passenger vehicles route file** (in our case, the file is `osm.passenger.rou.xml` in the scenario folder, see an example [here](scenarios/defined/sp/sp-1/osm.passenger.rou.xml), but it could use `osm.passenger.trips.xml`).
+If you want to generate different scenarios, you can use the [OSMWebWizard tool](https://sumo.dlr.de/docs/Tutorials/OSMWebWizard.html). The selected EV must be in the **passenger vehicles route file** (in our case, the file is `osm.passenger.rou.xml` in the scenario folder, see an example [here](scenarios/defined/sp/sp-1/osm.passenger.rou.xml), but it could use `osm.passenger.trips.xml` instead).
 
 ## License
 

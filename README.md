@@ -26,6 +26,10 @@ and then
 
 The rest of the SUMO installation instructions are [here](https://github.com/eclipse/sumo#build-and-installation).
 
+## Maps
+
+We choose two Regions to run our experiments: SP (Sao Paulo) and NY (New York), two known cities by their traffic issues (check selected areas [here](https://osm.org/go/M~y3Wb~J-) and [here](https://osm.org/go/Zct53QdI-)).
+
 ## Running the baseline (No preemption) version
 
 To observe the gain achieved by preemptive implementations, one must first run the baseline version, i.e., the situation where no preemption is used. To do that, execute the following command in this repository folder

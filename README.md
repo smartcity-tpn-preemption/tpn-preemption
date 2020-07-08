@@ -74,6 +74,10 @@ Our version of Fuzzy logic algorithm (based on [this work](https://ieeexplore.ie
 
 If you want to generate different scenarios, you can use the [OSMWebWizard tool](https://sumo.dlr.de/docs/Tutorials/OSMWebWizard.html). The selected EV must be in the **passenger vehicles route file** (in our case, the file is `osm.passenger.rou.xml` in the scenario folder, see an example [here](scenarios/defined/sp/sp-1/osm.passenger.rou.xml), but it could use `osm.passenger.trips.xml` instead).
 
+## Comparison examples (Youtube videos)
+
+You can check comparison videos of two scenarios: [SP-1](https://youtu.be/_AgZ3HyDgCs) and [SP-5](https://youtu.be/7r_lyiemsE0). We compare the version without preemption with the one that uses the Timed Petri Net Algorithm using the same seed.
+
 ## License
 
 This Project is released under the [Mozilla Public License version 2](https://www.mozilla.org/en-US/MPL/2.0/).
